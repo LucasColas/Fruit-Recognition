@@ -10,6 +10,7 @@ folders = os.listdir(main_path)
 for folder in folders:
     #print(os.path.join(main_path, folder))
     files = os.listdir(os.path.join(main_path, folder))
+    print(len(files))
     if len(files) < 8:
         for subfolder in files:
             print(os.path.join(main_path, folder, subfolder))
