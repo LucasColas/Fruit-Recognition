@@ -6,7 +6,11 @@ import os
 main_path = r'E:\Projets code\Fruit recognition'
 folders = os.listdir(main_path)
 
+
 for folder in folders:
-    print(folder)
-    files, extension = os.path.splitext(folder)
-    print(files, extension)
+    #print(os.path.join(main_path, folder))
+    files = os.listdir(os.path.join(main_path, folder))
+    if len(files) < 8:
+        for subfolder in files:
+            print(os.path.join(main_path, folder, subfolder))
+            files = os.listdir(os.path.join(main_path, folder, subfolder))
