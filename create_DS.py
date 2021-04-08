@@ -15,7 +15,7 @@ def get_data(path, folder):
     print(classes)
 
 
-    for classe in classes:
+    for i,classe in enumerate(classes):
         path_images = os.path.join(classes_path, classe)
         images = os.listdir(path_images)
         #print(len(images))
@@ -24,7 +24,8 @@ def get_data(path, folder):
             label_one_hot = [0 for j in range(len(classes))]
             img = cv2.imread(os.path.join(path_images,image))
             img_resize = cv2.resize(img, (120,120))
-            data.append()
+            label_one_hot[i] = 1
+            data.append((img_resize, label_one_hot))
 
 
 
