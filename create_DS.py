@@ -19,13 +19,17 @@ def get_data(path, folder):
         path_images = os.path.join(classes_path, classe)
         images = os.listdir(path_images)
         #print(len(images))
-
+        count = 0
         for image in images:
             label_one_hot = [0 for j in range(len(classes))]
-            img = cv2.imread(os.path.join(path_images,image))
-            img_resize = cv2.resize(img, (120,120))
-            label_one_hot[i] = 1
-            data.append((img_resize, label_one_hot))
+            try:
+                img = cv2.imread(os.path.join(path_images,image))
+                img_resize = cv2.resize(img, (120,120))
+                label_one_hot[i] = 1
+                data.append((img_resize, label_one_hot))
+                print(data)
+            except  Exception as e:
+                print(str(e))
 
 
 
