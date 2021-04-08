@@ -46,3 +46,7 @@ X_train, y_train = get_X_y(data)
 
 data_val = get_data(main_path, folders_name[1])
 X_val, y_val = get_X_y(data_val)
+
+
+data_test = get_data(main_path, folders_name[2])
+X_val, y_val = get_X_y(data_test)
