@@ -7,13 +7,16 @@ main_path = r'E:\Projets code\DS Fruit recognition'
 folders = os.listdir(main_path)
 
 
+folders_name = ["Train", "Validation"]
+def get_data(path, folder):
 
-def get_data(path):
-    folders_name = ["Train", "Validation"]
-    folders = os.listdir(main_path)
-    print(folders)
+    classes_path = os.path.join(path, folder)
+    classes = os.listdir(classes_path)
+    print(classes)
+    for classe in folders_name:
+        pass
 
-    for folder in folders:
 
 
-get_data(main_path)
+X_train = get_data(main_path, folders_name[0])
+X_Val = None
