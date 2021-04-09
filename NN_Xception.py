@@ -15,4 +15,6 @@ model.add(layers.Flatten())
 model.add(layers.Dense(256))
 model.add(layers.Dense(23, activation="softmax"))
 model.summary()
+print("trainable weights", len(model.trainable_weights))
 Xception_arch.trainable = False
+print("trainable weights", len(model.trainable_weights))

@@ -27,7 +27,7 @@ def get_data(path, folder):
                 img_resize = cv2.resize(img, (100,100))
                 label_one_hot[i] = 1
                 data.append((img_resize, label_one_hot))
-                print(data)
+                #print(data)
             except Exception as e:
                 print(str(e))
 
