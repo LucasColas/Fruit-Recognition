@@ -42,7 +42,7 @@ def get_X_y(data):
     return (X_train, y_train)
 
 data_train = get_data(main_path, folders_name[0])
-X_train, y_train = get_X_y(data)
+X_train, y_train = get_X_y(data_train)
 
 data_val = get_data(main_path, folders_name[1])
 X_val, y_val = get_X_y(data_val)
