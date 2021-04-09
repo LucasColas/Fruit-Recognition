@@ -19,4 +19,4 @@ print("trainable weights", len(model.trainable_weights))
 Xception_arch.trainable = False
 print("trainable weights", len(model.trainable_weights))
 
-model.compile(optimizer=optimizers.Adam(), loss="categorical_crossentropy")
+model.compile(loss="categorical_crossentropy", optimizer=optimizers.Adam(), metrics=["acc"])
