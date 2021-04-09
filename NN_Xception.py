@@ -3,7 +3,16 @@ from tensorflow.keras import models, layers, optimizers
 import numpy as np
 import matplotlib.pyplot as plt
 
-#from create_DS import X_train, y_train, X_val, y_val, X_test, y_test
+from create_DS import X_train, y_train, X_val, y_val
+
+X = np.array(X_train, dtype="Float").reshape(-1, 100,100,3)
+X //= 255
+Y = np.array(y_train)
+
+X_valid = np.array(X_val, dtype='Float').reshape(-1, 100, 100,3)
+X_valid //= 255
+Y_valid = np.array(y_val)
+
 
 
 
@@ -19,4 +28,7 @@ print("trainable weights", len(model.trainable_weights))
 Xception_arch.trainable = False
 print("trainable weights", len(model.trainable_weights))
 
-model.compile(loss="categorical_crossentropy", optimizer=optimizers.Adam(), metrics=["acc"])
+model.compile(optimizer=optimizers.Adam(), loss="categorical_crossentropy", metrics=["acc"])
+
+
+model.fit(X, Y, batch_size=32, epochs=5, validation_data=(X_valid, Y_valid))
