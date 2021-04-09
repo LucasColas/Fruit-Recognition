@@ -14,3 +14,5 @@ model.add(Xception_arch)
 model.add(layers.Flatten())
 model.add(layers.Dense(256))
 model.add(layers.Dense(23, activation="softmax"))
+model.summary()
+Xception_arch.trainable = False
