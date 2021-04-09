@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 
 from create_DS import X_train, y_train, X_val, y_val
 
-X = np.array(X_train, dtype="Float").reshape(-1, 100,100,3)
+X = np.array(X_train, dtype="float32").reshape(-1, 100,100,3)
 X //= 255
 Y = np.array(y_train)
 
-X_valid = np.array(X_val, dtype='Float').reshape(-1, 100, 100,3)
+X_valid = np.array(X_val, dtype='float32').reshape(-1, 100, 100,3)
 X_valid //= 255
 Y_valid = np.array(y_val)
 
