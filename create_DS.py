@@ -24,11 +24,11 @@ def get_data(path, folder):
             label_one_hot = [0 for j in range(len(classes))]
             try:
                 img = cv2.imread(os.path.join(path_images,image))
-                img_resize = cv2.resize(img, (120,120))
+                img_resize = cv2.resize(img, (100,100))
                 label_one_hot[i] = 1
                 data.append((img_resize, label_one_hot))
                 print(data)
-            except  Exception as e:
+            except Exception as e:
                 print(str(e))
 
 
@@ -49,4 +49,4 @@ X_val, y_val = get_X_y(data_val)
 
 
 data_test = get_data(main_path, folders_name[2])
-X_val, y_val = get_X_y(data_test)
+X_test, y_test = get_X_y(data_test)
