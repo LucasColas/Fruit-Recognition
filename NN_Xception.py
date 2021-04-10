@@ -27,7 +27,7 @@ model.add(layers.Dense(256))
 model.add(layers.Dense(15, activation="softmax"))
 model.summary()
 print("trainable weights", len(model.trainable_weights))
-Xception_arch.trainable = False
+Inception_arch.trainable = False
 print("trainable weights", len(model.trainable_weights))
 
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5), loss="categorical_crossentropy", metrics=["acc"])
