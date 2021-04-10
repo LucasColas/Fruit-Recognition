@@ -14,13 +14,14 @@ X_valid = np.array(X_val, dtype='float32').reshape(-1, 100, 100,3)
 X_valid //= 255
 Y_valid = np.array(y_val)
 
+X_enc = preprocess_input(X)
+X_valid_enc = preprocess_input(X_valid)
 
 
-
-Xception_arch = Xception(include_top = False, input_shape=(100,100,3))
+Inception_arch = inception_v3(include_top = False, input_shape=(100,100,3))
 
 model = models.Sequential()
-model.add(Xception_arch)
+model.add(Inception_arch)
 model.add(layers.Flatten())
 model.add(layers.Dense(256))
 model.add(layers.Dense(15, activation="softmax"))
