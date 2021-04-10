@@ -18,7 +18,7 @@ X_enc = preprocess_input(X)
 X_valid_enc = preprocess_input(X_valid)
 
 
-Inception_arch = inception_v3(include_top = False, input_shape=(100,100,3))
+Inception_arch = InceptionV3(include_top = False, input_shape=(100,100,3))
 
 model = models.Sequential()
 model.add(Inception_arch)
