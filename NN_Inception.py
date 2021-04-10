@@ -22,6 +22,8 @@ Inception_arch = InceptionV3(include_top = False, input_shape=(100,100,3))
 
 model = models.Sequential()
 model.add(Inception_arch)
+print("model",model)
+print("Inception_arch", Inception_arch)
 model.add(layers.Flatten())
 model.add(layers.Dense(256))
 model.add(layers.Dense(15, activation="softmax"))
