@@ -7,6 +7,7 @@ folders = os.listdir(main_path)
 
 
 folders_name = ["Train", "Validation", "Test"]
+
 def get_data(path, folder):
     data = []
     classes_path = os.path.join(path, folder)
