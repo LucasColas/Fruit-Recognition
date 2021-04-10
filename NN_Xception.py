@@ -1,4 +1,4 @@
-from tensorflow.keras.applications import inception_v3
+from tensorflow.keras.applications import InceptionV3
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 from tensorflow.keras import models, layers, optimizers
 import numpy as np
