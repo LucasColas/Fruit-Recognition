@@ -28,7 +28,7 @@ print("trainable weights", len(model.trainable_weights))
 Xception_arch.trainable = False
 print("trainable weights", len(model.trainable_weights))
 
-model.compile(optimizer=optimizers.Adam(), loss="categorical_crossentropy", metrics=["acc"])
+model.compile(optimizer=optimizers.RMSprop(lr=2e-5), loss="categorical_crossentropy", metrics=["acc"])
 
 
 model.fit(X, Y, batch_size=32, epochs=15, validation_data=(X_valid, Y_valid))
