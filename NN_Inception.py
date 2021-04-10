@@ -19,7 +19,7 @@ X_valid_enc = preprocess_input(X_valid)
 
 
 Inception_arch = InceptionV3(include_top = False, input_shape=(100,100,3))
-
+print("Inception_arch : ", Inception_arch)
 model = models.Sequential()
 model.add(Inception_arch)
 print("model",model)
