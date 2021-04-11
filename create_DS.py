@@ -20,7 +20,7 @@ def get_data(path, folder):
         path_images = os.path.join(classes_path, classe)
         images = os.listdir(path_images)
         #print(len(images))
-        
+
         for image in images:
             label_one_hot = [0 for j in range(len(classes))]
             try:
