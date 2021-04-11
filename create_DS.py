@@ -20,7 +20,7 @@ def get_data(path, folder):
         path_images = os.path.join(classes_path, classe)
         images = os.listdir(path_images)
         #print(len(images))
-        count = 1
+        
         for image in images:
             label_one_hot = [0 for j in range(len(classes))]
             try:
@@ -30,9 +30,7 @@ def get_data(path, folder):
                 data.append((img_resize, label_one_hot))
                 print("append image")
                 #print(data)
-                if count >= 128:
-                    break
-                count += 1
+
             except Exception as e:
                 print(str(e))
 
