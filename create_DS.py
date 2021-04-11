@@ -2,7 +2,7 @@ import os
 import cv2
 import matplotlib.pyplot as plt
 
-main_path = r'E:\Projets code\DS Fruit recognition'
+main_path = r'E:\Projets code\Dataset Fruit recognition'
 folders = os.listdir(main_path)
 
 
