@@ -37,4 +37,4 @@ model.compile(optimizer=optimizers.RMSprop(lr=2e-5), loss="categorical_crossentr
 print("X_enc : ",X_enc.shape, "X_val end : ",X_valid_enc.shape)
 print("Y : ", Y.shape, "Y val : ", Y_valid.shape)
 
-model.fit(X_enc, Y, batch_size=32, epochs=15, validation_data=(X_valid_enc, Y_valid))
+model.fit(X_enc, Y, batch_size=32, epochs=15, validation_split=0.2)
