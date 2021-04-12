@@ -22,11 +22,11 @@ def get_data(path, folder):
         #print(len(images))
         count = 1
         for image in images:
-            label_one_hot = [0 for j in range(len(classes))]
+
             try:
                 img = cv2.imread(os.path.join(path_images,image))
                 img_resize = cv2.resize(img, (100,100))
-                label_one_hot[i] = i
+                label_one_hot = i
                 data.append((img_resize, label_one_hot))
                 print("append image")
                 #print(data)
