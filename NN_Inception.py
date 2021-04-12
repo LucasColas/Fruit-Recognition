@@ -6,14 +6,22 @@ import matplotlib.pyplot as plt
 
 from create_DS import X_train, y_train, X_val, y_val
 
+def one_hot(labels, dimension=15):
+    results = np.zeros((len(labels), dimension))
+
+    for i, label in enumerate(labels):
+        results[i, label] = 1
+
+    return labels
+
 X = np.array(X_train, dtype="float32").reshape(-1, 100,100,3)
 X //= 255
-Y = np.array(y_train)
+Y = one_hot(labels)
 print(Y)
 
 X_valid = np.array(X_val, dtype='float32').reshape(-1, 100, 100,3)
 X_valid //= 255
-Y_valid = np.array(y_val)
+Y_valid = one_hot(labels)
 
 X_enc = preprocess_input(X)
 X_valid_enc = preprocess_input(X_valid)

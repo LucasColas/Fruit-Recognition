@@ -41,13 +41,13 @@ def get_data(path, folder):
 
 
 def get_X_y(data):
-    X_train = []
-    y_train = []
+    X = []
+    y = []
     for piece_data, label in data:
-        X_train.append(piece_data)
-        y_train.append(label)
+        X.append(piece_data)
+        y.append(label)
 
-    return (X_train, y_train)
+    return (X, y)
 
 data_train = get_data(main_path, folders_name[0])
 #print("data_train",data_train)
