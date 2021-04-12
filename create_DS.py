@@ -30,9 +30,7 @@ def get_data(path, folder):
                 data.append((img_resize, label_one_hot))
                 print("append image")
                 #print(data)
-                if count >= 64:
-                    break
-                count += 1
+                
 
             except Exception as e:
                 print(str(e))
