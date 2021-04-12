@@ -26,7 +26,7 @@ def get_data(path, folder):
             try:
                 img = cv2.imread(os.path.join(path_images,image))
                 img_resize = cv2.resize(img, (100,100))
-                label_one_hot[i] = 1
+                label_one_hot[i] = i
                 data.append((img_resize, label_one_hot))
                 print("append image")
                 #print(data)
