@@ -15,12 +15,12 @@ def one_hot(labels, dimension=15):
     return labels
 
 X = np.array(X_train, dtype="float32").reshape(-1, 100,100,3)
-X //= 255
+#X //= 255
 Y = one_hot(labels)
 print(Y)
 
 X_valid = np.array(X_val, dtype='float32').reshape(-1, 100, 100,3)
-X_valid //= 255
+#X_valid //= 255
 Y_valid = one_hot(labels)
 
 X_enc = preprocess_input(X)
