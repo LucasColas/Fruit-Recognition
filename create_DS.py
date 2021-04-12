@@ -13,7 +13,7 @@ def get_data(path, folder):
     classes_path = os.path.join(path, folder)
     #print(classes_path)
     classes = os.listdir(classes_path)
-    print(classes)
+    #print(classes)
 
 
     for i,classe in enumerate(classes):
@@ -30,7 +30,7 @@ def get_data(path, folder):
                 data.append((img_resize, label_one_hot))
                 print("append image")
                 #print(data)
-                if count => 64:
+                if count >= 64:
                     break
                 count += 1
 
@@ -50,14 +50,14 @@ def get_X_y(data):
     return (X_train, y_train)
 
 data_train = get_data(main_path, folders_name[0])
-print("data_train",data_train)
+#print("data_train",data_train)
 X_train, y_train = get_X_y(data_train)
 
 data_val = get_data(main_path, folders_name[1])
-print("data_val",data_val)
+#print("data_val",data_val)
 X_val, y_val = get_X_y(data_val)
 
 
 data_test = get_data(main_path, folders_name[2])
-print("data_test",data_test)
+#print("data_test",data_test)
 X_test, y_test = get_X_y(data_test)
