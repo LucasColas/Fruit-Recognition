@@ -1,12 +1,13 @@
 from tensorflow.keras.applications import InceptionV3, VGG16
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 from tensorflow.keras import models, layers, optimizers
-from tensorflow.keras.preprocessing import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-from create_DS import X_train, y_train, X_val, y_val, main_path
+#from create_DS import X_train, y_train, X_val, y_val, main_path
+main_path = r'E:\Projets code\Dataset Fruit recognition'
 folders_path_train = os.path.join(main_path, "Train")
 folders_path_val = os.path.join(main_path, "Validation")
 train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip = True)
@@ -26,7 +27,7 @@ model.add(layers.Flatten())
 model.add(layers.Dense(256, activation='relu'))
 model.add(layers.Dense(15, activation='softmax'))
 
-model.compile(,optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
+model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
 model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=32, validation_data=valid_generator, validation_steps=valid_generator)
 
 """
