@@ -17,12 +17,16 @@ steps_per_epoch = train_generator.n//train_generator.batch_size
 step_size_valid = valid_generator.n//valid_generator.batch_size
 
 vgg = VGG16(weights="imagenet", include_top=False, input_shape=(100,100,3))
+vgg.trainable = False
+
+
 model = models.Sequential()
 model.add(vgg)
 model.add(layers.Flatten())
 model.add(layers.Dense(256, activation='relu'))
 model.add(layers.Dense(15, activation='softmax'))
-vgg.trainable = False
+
+model.compile(,optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
 model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=32, validation_data=valid_generator, validation_steps=valid_generator)
 
 """
