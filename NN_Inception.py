@@ -13,6 +13,9 @@ train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0
 train_generator = train_datagen.flow_from_directory(folders_path_train, target_size=(100,100), batch_size=32, class_mode="categorical")
 valid_generator = train_generator.flow_from_directory(folders_path_val, target_size=(100,100), batch_size=32, class_mode="categorical")
 
+steps_per_epoch = train_generator.n//train_generator.batch_size
+step_size_valid = valid_generator.n//valid_generator.batch_size
+model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=32, validation_data=valid_generator, validation_steps=valid_generator)
 
 """
 
