@@ -7,8 +7,12 @@ import os
 import matplotlib.pyplot as plt
 
 from create_DS import X_train, y_train, X_val, y_val, main_path
-folders_path = os.path.join(main_path, "Train")
-image_dataset_from_directory
+folders_path_train = os.path.join(main_path, "Train")
+folders_path_val = os.path.join(main_path, "Validation")
+train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip = True)
+train_generator = train_datagen.flow_from_directory(folders_path_train, target_size=(100,100), batch_size=32, class_mode="categorical")
+valid_generator = train_generator.flow_from_directory(folders_path_val, target_size=(100,100), batch_size=32, class_mode="categorical")
+
 
 """
 
