@@ -29,7 +29,7 @@ model.add(layers.Dense(256, activation='relu'))
 model.add(layers.Dense(15, activation='softmax'))
 
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
-model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=32, validation_data=valid_generator, validation_steps=steps_size_valid)
+model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=15, validation_data=valid_generator, validation_steps=steps_size_valid)
 model.save("NN_VGG16.h5")
 
 acc = history.history['acc']
