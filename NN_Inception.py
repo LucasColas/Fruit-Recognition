@@ -1,10 +1,16 @@
 from tensorflow.keras.applications import InceptionV3
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 from tensorflow.keras import models, layers, optimizers
+from tensorflow.keras.preprocessing import ImageDataGenerator
 import numpy as np
+import os
 import matplotlib.pyplot as plt
 
-from create_DS import X_train, y_train, X_val, y_val
+from create_DS import X_train, y_train, X_val, y_val, main_path
+folders_path = os.path.join(main_path, "Train")
+image_dataset_from_directory
+
+"""
 
 def one_hot(labels, dimension=15):
     results = np.zeros((len(labels), dimension))
@@ -47,3 +53,5 @@ print("X_enc : ",X_enc.shape, "X_val end : ",X_valid_enc.shape)
 print("Y : ", Y.shape, "Y val : ", Y_valid.shape)
 
 model.fit(X_enc, Y, batch_size=32, epochs=15, validation_data=(X_valid_enc, Y_valid))
+
+"""
