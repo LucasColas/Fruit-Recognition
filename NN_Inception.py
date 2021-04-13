@@ -1,4 +1,4 @@
-from tensorflow.keras.applications import InceptionV3
+from tensorflow.keras.applications import InceptionV3, VGG16
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 from tensorflow.keras import models, layers, optimizers
 from tensorflow.keras.preprocessing import ImageDataGenerator
@@ -15,6 +15,14 @@ valid_generator = train_generator.flow_from_directory(folders_path_val, target_s
 
 steps_per_epoch = train_generator.n//train_generator.batch_size
 step_size_valid = valid_generator.n//valid_generator.batch_size
+
+vgg = VGG16(weights="imagenet", include_top=False, input_shape=(100,100,3))
+model = models.Sequential()
+model.add(vgg)
+model.add(layers.Flatten())
+model.add(layers.Dense(256, activation='relu'))
+model.add(layers.Dense(15, activation='softmax'))
+vgg.trainable = False
 model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=32, validation_data=valid_generator, validation_steps=valid_generator)
 
 """
