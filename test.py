@@ -15,8 +15,9 @@ for classe in classes:
     images = os.listdir(path_class)
     for image in images:
         try:
-            print(image)
+
             img = cv2.imread(os.path.join(path_class, image))
+            print(img.shape)
             rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             new_image = cv2.resize(rgb_image, (100,100))
             test_images.append(new_image)
@@ -24,8 +25,8 @@ for classe in classes:
             break
 
         except Exception as e:
-            #print("error", str(e))
-            pass
+            print("error", str(e))
+
 
 
 np_images = np.asarray(test_images).reshape(-1,100,100,3)
