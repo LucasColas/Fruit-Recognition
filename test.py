@@ -43,6 +43,7 @@ for classe in classes:
 
 
 model = models.load_model("NN_VGG16.h5")
+model.evaluate()
 
 def prediction(images):
     for image in images:
