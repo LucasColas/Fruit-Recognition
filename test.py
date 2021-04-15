@@ -11,7 +11,7 @@ test_path = r'E:\Projets code\Dataset Fruit Recognition\Test'
 classes = os.listdir(test_path)
 test_images = []
 
-for classe in classes:
+for i,classe in enumerate(classes):
     path_class = os.path.join(test_path, classe)
     images = os.listdir(path_class)
     count = 1
