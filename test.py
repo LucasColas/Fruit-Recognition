@@ -16,9 +16,8 @@ for classe in classes:
     for image in images:
         try:
 
-            img = cv2.imread(os.path.join(path_class, image))
-            print(os.path.join(path_class, image))
-            print(img.shape)
+            cv2.imdecode(np.fromfile(os.path.join(path_class, image), dtype=np.uint8), cv2.IMREAD_UNCHANGED)
+            print(img)
             rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             new_image = cv2.resize(rgb_image, (100,100))
             test_images.append(new_image)
