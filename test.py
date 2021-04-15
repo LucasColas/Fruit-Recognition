@@ -17,6 +17,7 @@ for classe in classes:
         try:
 
             img = cv2.imread(os.path.join(path_class, image))
+            print(os.path.join(path_class, image))
             print(img.shape)
             rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             new_image = cv2.resize(rgb_image, (100,100))
