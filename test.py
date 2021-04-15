@@ -51,10 +51,12 @@ def prediction(images):
         x //= 255
 
         predict = model.predict(x)
-        print(predict)
+
+        print(predict.shape)
+        print(np.argmax(predict))
 
         plt.clf()
         plt.imshow(image)
         plt.show()
 
-#prediction(test_images)
+prediction(test_images)
