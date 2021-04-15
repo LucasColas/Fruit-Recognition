@@ -13,19 +13,26 @@ test_images = []
 for classe in classes:
     path_class = os.path.join(test_path, classe)
     images = os.listdir(path_class)
+    count = 1
     for image in images:
         try:
 
-            cv2.imdecode(np.fromfile(os.path.join(path_class, image), dtype=np.uint8), cv2.IMREAD_UNCHANGED)
-            print(img)
+            img = cv2.imdecode(np.fromfile(os.path.join(path_class, image), dtype=np.uint8), cv2.IMREAD_UNCHANGED)
+
             rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             new_image = cv2.resize(rgb_image, (100,100))
             test_images.append(new_image)
             print("classe : ", classe)
-            break
+            if count >= 5:
+                break
+            #print(count)
+            count += 1
+
 
         except Exception as e:
             print("error", str(e))
+
+
 
 
 
