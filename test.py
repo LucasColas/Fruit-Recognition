@@ -43,7 +43,7 @@ np_images = np.asarray(test_images).reshape(-1,100,100,3)
 
 
 model = models.load_model("NN_VGG16.h5")
-model.predict(np_images)
+
 
 def prediction(images):
     for image in images:
