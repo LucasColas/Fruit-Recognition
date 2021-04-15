@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import cv2
+from tensorflow.keras import models
 
 test_path = r'E:\Projets code\Dataset Fruit Recognition\Test'
 
@@ -23,7 +24,7 @@ for classe in classes:
             new_image = cv2.resize(rgb_image, (100,100))
             test_images.append(new_image)
             print("classe : ", classe)
-            if count >= 5:
+            if count >= 1:
                 break
             #print(count)
             count += 1
@@ -36,6 +37,23 @@ for classe in classes:
 
 
 
-np_images = np.asarray(test_images).reshape(-1,100,100,3)
+#np_images = np.asarray(test_images).reshape(-1,100,100,3)
 #print(np_images)
-print(np_images.shape)
+#print(np_images.shape)
+
+
+model = models.load_model("NN_VGG16.h5")
+
+def prediction(images):
+    for image in images:
+        x = np.array(image, dtype="float32").reshape(-1,100,100,3)
+        x //= 255
+
+        predict = model.predict(x)
+        print(predict)
+
+        plt.clf()
+        plt.imshow(image)
+        plt.show()
+
+prediction(test_images)
