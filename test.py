@@ -37,13 +37,13 @@ for i,classe in enumerate(classes):
 
 
 
-#np_images = np.asarray(test_images).reshape(-1,100,100,3)
+np_images = np.asarray(test_images).reshape(-1,100,100,3)
 #print(np_images)
 #print(np_images.shape)
 
 
 model = models.load_model("NN_VGG16.h5")
-model.evaluate()
+model.predict(np_images)
 
 def prediction(images):
     for image in images:
@@ -57,4 +57,4 @@ def prediction(images):
         plt.imshow(image)
         plt.show()
 
-prediction(test_images)
+#prediction(test_images)
