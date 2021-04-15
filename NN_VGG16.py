@@ -15,6 +15,10 @@ train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0
 train_generator = train_datagen.flow_from_directory(folders_path_train, target_size=(100,100), batch_size=32, class_mode="categorical")
 valid_generator = train_datagen.flow_from_directory(folders_path_val, target_size=(100,100), batch_size=32, class_mode="categorical")
 
+for batch, label in train_generator:
+    print(batch.shape)
+    print(label)
+    break
 steps_per_epoch = train_generator.n//train_generator.batch_size
 steps_size_valid = valid_generator.n//valid_generator.batch_size
 
