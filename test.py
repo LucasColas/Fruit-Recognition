@@ -40,7 +40,6 @@ model = models.load_model("NN_VGG16.h5")
 
 def prediction(images):
     for image in images.items():
-        print(image[1])
         x = np.array(image[1], dtype="float32").reshape(-1,100,100,3)
         x /= 255
 
