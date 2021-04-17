@@ -14,6 +14,7 @@ test_generator = test_datagen.flow_from_directory(test_path, target_size=(100,10
 classes = os.listdir(test_path)
 test_images = {}
 
+
 for i,classe in enumerate(classes):
     path_class = os.path.join(test_path, classe)
     images = os.listdir(path_class)
@@ -39,6 +40,7 @@ for i,classe in enumerate(classes):
 
 
 model = models.load_model("NN_VGG16.h5")
+
 
 
 def prediction(images):
