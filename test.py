@@ -12,35 +12,44 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 test_generator = test_datagen.flow_from_directory(test_path, target_size=(100,100), batch_size=32, class_mode="categorical")
 
 classes = os.listdir(test_path)
-test_images = {}
 
 
-for i,classe in enumerate(classes):
-    path_class = os.path.join(test_path, classe)
-    images = os.listdir(path_class)
-    count = 1
-    for image in images:
-        try:
+def load_images(classes):
+    test_images = {}
+    for i,classe in enumerate(classes):
+        path_class = os.path.join(test_path, classe)
+        images = os.listdir(path_class)
+        count = 1
+        for image in images:
+            try:
 
-            img = cv2.imdecode(np.fromfile(os.path.join(path_class, image), dtype=np.uint8), cv2.IMREAD_UNCHANGED)
+                img = cv2.imdecode(np.fromfile(os.path.join(path_class, image), dtype=np.uint8), cv2.IMREAD_UNCHANGED)
 
-            rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            new_image = cv2.resize(rgb_image, (100,100))
-            test_images[classe] = new_image
+                rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                new_image = cv2.resize(rgb_image, (100,100))
+                test_images[classe] = new_image
 
-            print("classe : ", classe)
-            if count >= 1:
-                break
-            #print(count)
-            count += 1
+                print("classe : ", classe)
+                if count >= 1:
+                    break
+                #print(count)
+                count += 1
 
 
-        except Exception as e:
-            print("error", str(e))
+            except Exception as e:
+                print("error", str(e))
+        return test_images
 
 
 model = models.load_model("NN_VGG16.h5")
 
+def eval_model(test_generator,max):
+    count = 0
+    for batch, label in test_generator:
+        model.evaluate(batch, label)
+        count += 1
+        if count >= max:
+            break
 
 
 def prediction(images):
