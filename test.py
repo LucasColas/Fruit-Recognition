@@ -4,9 +4,12 @@ import numpy as np
 import os
 import cv2
 from tensorflow.keras import models
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 test_path = r'E:\Projets code\Dataset Fruit Recognition\Test'
 
+test_datagen = ImageDataGenerator(rescale=1./255)
+test_generator = test_datagen.flow_from_directory(test_path, target_size=(100,100), batch_size=32, class_mode="categorical")
 
 classes = os.listdir(test_path)
 test_images = {}
