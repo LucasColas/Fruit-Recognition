@@ -26,7 +26,7 @@ for batch, label in train_generator:
             break
     break
 
-"""
+
 steps_per_epoch = train_generator.n//train_generator.batch_size
 steps_size_valid = valid_generator.n//valid_generator.batch_size
 
@@ -65,4 +65,3 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
-"""
