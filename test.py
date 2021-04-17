@@ -9,7 +9,7 @@ test_path = r'E:\Projets code\Dataset Fruit Recognition\Test'
 
 
 classes = os.listdir(test_path)
-test_images = []
+test_images = {}
 
 for i,classe in enumerate(classes):
     path_class = os.path.join(test_path, classe)
@@ -22,7 +22,8 @@ for i,classe in enumerate(classes):
 
             rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             new_image = cv2.resize(rgb_image, (100,100))
-            test_images.append(new_image)
+            test_images[classe] = new_image
+
             print("classe : ", classe)
             if count >= 1:
                 break
@@ -34,29 +35,22 @@ for i,classe in enumerate(classes):
             print("error", str(e))
 
 
-
-
-
-np_images = np.asarray(test_images).reshape(-1,100,100,3)
-#print(np_images)
-#print(np_images.shape)
-
-
 model = models.load_model("NN_VGG16.h5")
 
 
 def prediction(images):
-    for image in images:
-        x = np.array(image, dtype="float32").reshape(-1,100,100,3)
-        x //= 255
+    for image in images.items():
+        print(image[1])
+        x = np.array(image[1], dtype="float32").reshape(-1,100,100,3)
+        x /= 255
 
         predict = model.predict(x)
-
+        print(image[0])
         print(predict.shape)
         print(np.argmax(predict))
 
         plt.clf()
-        plt.imshow(image)
+        plt.imshow(image[1])
         plt.show()
 
 prediction(test_images)
