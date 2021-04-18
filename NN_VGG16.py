@@ -39,6 +39,7 @@ model = models.Sequential()
 model.add(vgg)
 model.add(layers.Flatten())
 model.add(layers.Dense(256, activation='relu'))
+model.add(layers.Dropout(0.25))
 model.add(layers.Dense(15, activation='softmax'))
 
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
