@@ -34,18 +34,20 @@ steps_size_valid = valid_generator.n//valid_generator.batch_size
 
 vgg = VGG16(weights="imagenet", include_top=False, input_shape=(100,100,3))
 vgg.trainable = False
-#vgg.summary()
 
 set_trainable = False
 for layer in vgg.layers:
+    print(layer)
     if layer.name == 'block5_conv1':
         set_trainable = True
     if set_trainable:
         layer.trainable = True
     else:
         layer.trainable = False
+    print(layer.trainable)
 
-vgg._get_trainable_state()
+vgg.summary()
+
 
 """
 model = models.Sequential()
