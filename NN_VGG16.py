@@ -49,7 +49,7 @@ for layer in vgg.layers:
 vgg.summary()
 
 
-"""
+
 model = models.Sequential()
 model.add(vgg)
 model.add(layers.Flatten())
@@ -82,4 +82,3 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
-"""
