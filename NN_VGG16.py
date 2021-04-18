@@ -15,6 +15,7 @@ train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=42, brightness
 train_generator = train_datagen.flow_from_directory(folders_path_train, target_size=(100,100), batch_size=32, class_mode="categorical")
 valid_generator = train_datagen.flow_from_directory(folders_path_val, target_size=(100,100), batch_size=32, class_mode="categorical")
 
+"""
 for batch, label in train_generator:
     count = 0
     for index, image in enumerate(batch):
@@ -25,7 +26,7 @@ for batch, label in train_generator:
         if count >= 5:
             break
     break
-
+"""
 
 steps_per_epoch = train_generator.n//train_generator.batch_size
 steps_size_valid = valid_generator.n//valid_generator.batch_size
@@ -33,14 +34,27 @@ steps_size_valid = valid_generator.n//valid_generator.batch_size
 
 vgg = VGG16(weights="imagenet", include_top=False, input_shape=(100,100,3))
 vgg.trainable = False
+vgg.summary()
 
+set_trainable = False
+for layer in vgg.layers:
+    if layer.name == 'block5_conv1':
+        set_trainable = True
+    if set_trainable:
+        layer.trainable = True
+    else:
+        layer.trainable = False
 
+vgg._get_trainable_state()
+
+"""
 model = models.Sequential()
 model.add(vgg)
 model.add(layers.Flatten())
 model.add(layers.Dense(256, activation='relu'))
 model.add(layers.Dropout(0.25))
 model.add(layers.Dense(15, activation='softmax'))
+
 
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
 history = model.fit(train_generator, steps_per_epoch=steps_per_epoch, epochs=15, validation_data=valid_generator, validation_steps=steps_size_valid)
@@ -66,3 +80,4 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
+"""
