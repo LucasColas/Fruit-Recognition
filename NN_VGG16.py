@@ -34,7 +34,7 @@ steps_size_valid = valid_generator.n//valid_generator.batch_size
 
 vgg = VGG16(weights="imagenet", include_top=False, input_shape=(100,100,3))
 vgg.trainable = False
-vgg.summary()
+#vgg.summary()
 
 set_trainable = False
 for layer in vgg.layers:
