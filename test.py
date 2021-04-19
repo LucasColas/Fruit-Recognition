@@ -67,4 +67,5 @@ def prediction(images):
         plt.show()
 
 test_images = load_images(classes)
-prediction(test_images)
+#prediction(test_images)
+eval_model(test_generator,5)
