@@ -30,7 +30,7 @@ def load_images(classes):
                 test_images[classe] = new_image
 
                 print("classe : ", classe)
-                if count >= 1:
+                if count >= 3:
                     break
                 #print(count)
                 count += 1
@@ -38,10 +38,10 @@ def load_images(classes):
 
             except Exception as e:
                 print("error", str(e))
-        return test_images
+    return test_images
 
 
-model = models.load_model("NN_VGG16.h5")
+model = models.load_model("NN_VGG162.h5")
 
 def eval_model(test_generator,max):
     count = 0
@@ -66,4 +66,5 @@ def prediction(images):
         plt.imshow(image[1])
         plt.show()
 
+test_images = load_images(classes)
 prediction(test_images)
