@@ -1,5 +1,4 @@
-from tensorflow.keras.applications import InceptionV3, VGG16
-from tensorflow.keras.applications.inception_v3 import preprocess_input
+from tensorflow.keras.applications import VGG16
 from tensorflow.keras import models, layers, optimizers
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
