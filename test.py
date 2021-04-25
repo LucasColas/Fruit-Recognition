@@ -19,7 +19,7 @@ def load_images(classes):
     for i,classe in enumerate(classes):
         path_class = os.path.join(test_path, classe)
         images = os.listdir(path_class)
-        count = 1
+
         for image in images:
             try:
 
@@ -28,12 +28,8 @@ def load_images(classes):
                 rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 new_image = cv2.resize(rgb_image, (100,100))
                 test_images[classe] = new_image
-
-                print("classe : ", classe)
-                if count >= 3:
-                    break
-                #print(count)
-                count += 1
+                break
+                
 
 
             except Exception as e:
