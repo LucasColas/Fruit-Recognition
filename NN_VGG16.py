@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 main_path = r'E:\Projets code\Dataset Fruit recognition'
 folders_path_train = os.path.join(main_path, "Train")
 folders_path_val = os.path.join(main_path, "Validation")
-print("folders valid",folders_path_val)
+#print("folders valid",folders_path_val)
 train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=42, brightness_range=(0.3,2), shear_range=0.2, zoom_range=0.2, horizontal_flip = True, vertical_flip = True)
 train_generator = train_datagen.flow_from_directory(folders_path_train, target_size=(100,100), batch_size=32, class_mode="categorical")
 valid_generator = train_datagen.flow_from_directory(folders_path_val, target_size=(100,100), batch_size=32, class_mode="categorical")
