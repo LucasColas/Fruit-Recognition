@@ -1,5 +1,5 @@
 # Fruit-Recognition
-Fruit recognition using Deep Learning.
+A project of fruit recognition using Deep Learning (with Keras).
 
 
 ## Dataset
